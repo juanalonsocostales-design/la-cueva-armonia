@@ -181,7 +181,10 @@ let puntos=0;
 let aciertos=0;
 let fallos=0;
 let preguntaActual=null;
-
+let examenPreguntas=[];
+let examenActual=0;
+let examenAciertos=0;
+  
 function actualizarMarcadores(){
 
 document.getElementById("puntos").innerHTML="⭐ "+puntos;
@@ -3963,26 +3966,40 @@ modulo:modulo
 
 });
 
-preguntaActual=
-todos[
-Math.floor(Math.random()*todos.length)
-];
+todos=mezclarArray(todos);
 
-preguntaActual.opciones=
-mezclarArray(
-preguntaActual.opciones
+examenPreguntas=todos.slice(0,10);
+
+examenActual=0;
+
+examenAciertos=0;
+
+mostrarPreguntaExamen();
+
+}
+
+function mostrarPreguntaExamen(){
+
+let pregunta=
+JSON.parse(
+JSON.stringify(
+examenPreguntas[examenActual]
+)
 );
+
+pregunta.opciones=
+mezclarArray(
+pregunta.opciones
+);
+
+preguntaActual=pregunta;
 
 let iconos={
 
 teoria:"🎓",
-
 triadas:"🎵",
-
 cuatriadas:"🎹",
-
 tonalidades:"🎼",
-
 pentatonicas:"🎸"
 
 };
@@ -3991,28 +4008,26 @@ let html=`
 
 <div class="card">
 
-<h2>
+<h2>🏆 Examen General de Armonía</h2>
 
-🏆 Examen General de Armonía
-
-</h2>
+<p>Pregunta ${examenActual+1} de 10</p>
 
 <p>
 
-${iconos[preguntaActual.modulo]}
-${preguntaActual.modulo.toUpperCase()}
+${iconos[pregunta.modulo]}
+${pregunta.modulo.toUpperCase()}
 
 </p>
 
 <h3>
 
-${preguntaActual.pregunta}
+${pregunta.pregunta}
 
 </h3>
 
 `;
 
-preguntaActual.opciones.forEach(opcion=>{
+pregunta.opciones.forEach(opcion=>{
 
 html+=`
 
@@ -4037,11 +4052,9 @@ html+=`
 
 <button onclick="corregirExamen()">
 
-Corregir
+Responder
 
 </button>
-
-<div id="resultado"></div>
 
 </div>
 
@@ -4072,34 +4085,91 @@ respuesta.value===
 preguntaActual.correcta
 ){
 
-puntos+=10;
-aciertos++;
-
-document.getElementById("resultado").innerHTML=
-
-"<p class='ok'>✅ Correcto</p>";
-
-}else{
-
-fallos++;
-
-document.getElementById("resultado").innerHTML=
-
-"<p class='bad'>❌ Correcta: "
-+
-preguntaActual.correcta
-+
-"</p>";
+examenAciertos++;
 
 }
 
-actualizarMarcadores();
+examenActual++;
 
-document.getElementById("resultado").innerHTML+=
+if(examenActual>=10){
 
-"<br><button onclick='abrirExamen()'>Siguiente pregunta</button>";
+mostrarResultadoExamen();
 
-}  
+return;
+
+}
+
+mostrarPreguntaExamen();
+
+}
+
+function mostrarResultadoExamen(){
+
+let nota=examenAciertos;
+
+let mensaje="";
+
+if(nota<=4){
+
+mensaje="🎮 INSERT COIN - TRY AGAIN";
+
+}
+else if(nota<=6){
+
+mensaje="🍀 QUE SUERTE HAS TENIDO";
+
+}
+else if(nota<=8){
+
+mensaje="😎 NOT BAD";
+
+}
+else if(nota==9){
+
+mensaje="🤯 WTF YOU ARE ALMOST THERE";
+
+}
+else{
+
+mensaje="👑 YOU ARE THE MASTER";
+
+}
+
+document.getElementById("contenido").innerHTML=`
+
+<div class="card">
+
+<h2>🏆 Resultado Final</h2>
+
+<h3>
+
+Aciertos: ${examenAciertos}/10
+
+</h3>
+
+<h1>
+
+Nota: ${nota}
+
+</h1>
+
+<h2>
+
+${mensaje}
+
+</h2>
+
+<button onclick="abrirExamen()">
+
+🔄 Nuevo Examen
+
+</button>
+
+</div>
+
+`;
+
+}
 
 actualizarMarcadores();
 
