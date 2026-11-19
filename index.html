@@ -3,44 +3,72 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
 <title>La Cueva de la Armonía</title>
 
 <style>
+
 body{
-font-family:Arial,sans-serif;
-background:#f3f4f6;
-padding:20px;
+    font-family:Arial,sans-serif;
+    background:#f3f4f6;
+    margin:0;
+    padding:20px;
 }
 
 .container{
-max-width:900px;
-margin:auto;
+    max-width:1000px;
+    margin:auto;
 }
 
 .card{
-background:white;
-padding:20px;
-border-radius:12px;
-box-shadow:0 2px 10px rgba(0,0,0,.1);
-margin-bottom:20px;
+    background:white;
+    padding:20px;
+    border-radius:12px;
+    box-shadow:0 2px 10px rgba(0,0,0,.1);
+    margin-bottom:20px;
 }
 
 button{
-background:#2563eb;
-color:white;
-border:none;
-padding:12px;
-border-radius:8px;
-cursor:pointer;
-width:100%;
+    background:#2563eb;
+    color:white;
+    border:none;
+    padding:12px;
+    border-radius:8px;
+    cursor:pointer;
+    width:100%;
+    font-size:16px;
 }
 
 button:hover{
-background:#1d4ed8;
+    background:#1d4ed8;
 }
-</style>
 
+.menu{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+}
+
+.correcta{
+    color:green;
+    font-weight:bold;
+}
+
+.incorrecta{
+    color:red;
+    font-weight:bold;
+}
+
+.stats{
+    display:flex;
+    gap:20px;
+    font-weight:bold;
+    margin-bottom:20px;
+}
+
+</style>
 </head>
+
 <body>
 
 <div class="container">
@@ -49,21 +77,21 @@ background:#1d4ed8;
 
 <h1>🎸 La Cueva de la Armonía</h1>
 
-<h2>Academia de Armonía Moderna</h2>
+<h2>Juan Alonso Bass Academy</h2>
 
 <p>Selecciona un módulo:</p>
 
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+<div class="menu">
 
 <button onclick="abrirTriadas()">🎵 Tríadas</button>
 
-<button onclick="proximamente()">🎹 Cuatriadas</button>
+<button onclick="moduloConstruccion()">🎹 Cuatriadas</button>
 
-<button onclick="proximamente()">🎼 Tonalidades</button>
+<button onclick="moduloConstruccion()">🎼 Tonalidades</button>
 
-<button onclick="proximamente()">🎸 Pentatónicas</button>
+<button onclick="moduloConstruccion()">🎸 Pentatónicas</button>
 
-<button style="grid-column:span 2;" onclick="proximamente()">
+<button style="grid-column:span 2;" onclick="moduloConstruccion()">
 🏆 Examen Final
 </button>
 
@@ -77,38 +105,185 @@ background:#1d4ed8;
 
 <script>
 
-function abrirTriadas(){
+let puntos=0;
+let intentos=0;
+let respuestaCorrecta="";
 
-document.getElementById("contenido").innerHTML=`
+const triadas=[
+{
+notas:"C - E - G",
+acorde:"C",
+opciones:["Cm","C","C7","Cmaj7"]
+},
+{
+notas:"A - C - E",
+acorde:"Am",
+opciones:["Am","A","A7","Adim"]
+},
+{
+notas:"B - D - F",
+acorde:"Bdim",
+opciones:["Bm","B","Bdim","B7"]
+},
+{
+notas:"E - G - B",
+acorde:"Em",
+opciones:["E","Em","E7","Edim"]
+},
+{
+notas:"D - F# - A",
+acorde:"D",
+opciones:["D","Dm","D7","Dmaj7"]
+},
+{
+notas:"G - B - D",
+acorde:"G",
+opciones:["G","Gm","G7","Gmaj7"]
+}
+];
+
+function abrirTriadas(){
+nuevaPreguntaTriadas();
+}
+
+function nuevaPreguntaTriadas(){
+
+const pregunta=
+triadas[Math.floor(Math.random()*triadas.length)];
+
+respuestaCorrecta=pregunta.acorde;
+
+let html=`
 
 <div class="card">
 
 <h2>🎵 Módulo de Tríadas</h2>
 
-<h3>¿Qué acorde forman las notas C-E-G?</h3>
+<div class="stats">
 
-<ul>
-<li>Cm</li>
-<li><strong>C ✅</strong></li>
-<li>C7</li>
-<li>Cmaj7</li>
-</ul>
+<div>⭐ Puntos: ${puntos}</div>
+
+<div>📝 Intentos: ${intentos}</div>
+
+</div>
+
+<h3>¿Qué acorde forman las notas?</h3>
+
+<h1>${pregunta.notas}</h1>
+
+`;
+
+pregunta.opciones.forEach(opcion=>{
+
+html+=`
+
+<label>
+
+<input type="radio" name="respuesta" value="${opcion}">
+
+${opcion}
+
+</label>
+
+<br><br>
+
+`;
+
+});
+
+html+=`
+
+<button onclick="corregirTriada()">
+Corregir
+</button>
+
+<div id="resultado"></div>
 
 </div>
 
 `;
 
+document.getElementById("contenido").innerHTML=html;
+
 }
 
-function proximamente(){
+function corregirTriada(){
 
-document.getElementById("contenido").innerHTML=`
+const seleccionada=
+document.querySelector('input[name="respuesta"]:checked');
+
+if(!seleccionada){
+
+alert("Selecciona una respuesta");
+
+return;
+
+}
+
+intentos++;
+
+if(seleccionada.value===respuestaCorrecta){
+
+puntos++;
+
+document.getElementById("resultado").innerHTML=
+`
+<p class="correcta">
+✅ Correcto
+</p>
+
+<button onclick="nuevaPreguntaTriadas()">
+Siguiente pregunta
+</button>
+`;
+
+}else{
+
+document.getElementById("resultado").innerHTML=
+`
+<p class="incorrecta">
+❌ Incorrecto
+
+<br><br>
+
+Respuesta correcta:
+<strong>${respuestaCorrecta}</strong>
+
+</p>
+
+<button onclick="nuevaPreguntaTriadas()">
+Siguiente pregunta
+</button>
+`;
+
+}
+
+}
+
+function moduloConstruccion(){
+
+document.getElementById("contenido").innerHTML=
+`
 
 <div class="card">
 
-<h2>🚧 En construcción</h2>
+<h2>🚧 Módulo en construcción</h2>
 
-<p>Este módulo estará disponible próximamente.</p>
+<p>
+Este módulo estará disponible próximamente.
+</p>
+
+<p>
+Próximos módulos:
+</p>
+
+<ul>
+<li>Cuatriadas</li>
+<li>Tonalidades Mayores y Menores</li>
+<li>Relativas</li>
+<li>Pentatónicas</li>
+<li>Examen Final</li>
+</ul>
 
 </div>
 
