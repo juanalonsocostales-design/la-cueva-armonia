@@ -1,4 +1,177 @@
-🎵 La Cueva de la Armonía
-La web funciona correctamente.
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>La Cueva de la Armonía</title>
 
-Próximamente: tríadas, cuatriadas y pentatónicas.
+<style>
+body{
+font-family:Arial,sans-serif;
+background:#f3f4f6;
+margin:0;
+padding:20px;
+}
+
+.container{
+max-width:900px;
+margin:auto;
+}
+
+.card{
+background:white;
+padding:20px;
+border-radius:12px;
+box-shadow:0 2px 10px rgba(0,0,0,.1);
+margin-bottom:20px;
+}
+
+button{
+background:#2563eb;
+color:white;
+border:none;
+padding:12px 20px;
+border-radius:8px;
+cursor:pointer;
+}
+
+button:hover{
+background:#1d4ed8;
+}
+
+.correct{
+color:green;
+font-weight:bold;
+}
+
+.wrong{
+color:red;
+font-weight:bold;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="card">
+<h1>🎸 La Cueva de la Armonía</h1>
+
+<h3>Selecciona un nivel</h3>
+
+<select id="nivel">
+<option value="basico">Básico</option>
+<option value="intermedio">Intermedio</option>
+<option value="avanzado">Avanzado</option>
+</select>
+
+<button onclick="iniciar()">Comenzar</button>
+
+</div>
+
+<div id="quiz"></div>
+
+<div id="resultado"></div>
+
+</div>
+
+<script>
+
+const preguntas={
+
+basico:[
+["¿Qué acorde forman las notas C-E-G?",["C","Cm","C7","Cmaj7"],0],
+["¿Cuál es la relativa menor de C Mayor?",["Am","Em","Dm","Bm"],0],
+["¿Qué acorde forman A-C-E?",["Am","A","A7","Adim"],0]
+],
+
+intermedio:[
+["¿Qué acorde forman A-C-E-G?",["Am7","A7","Amaj7","Adim7"],0],
+["¿Cuál es la relativa mayor de Em?",["G","C","D","A"],0],
+["¿Qué acorde forman B-D-F?",["Bm","B","Bdim","B7"],2]
+],
+
+avanzado:[
+["¿Cuál es la cuatriada del V grado de C Mayor?",["G7","Gmaj7","Gm7","Gdim7"],0],
+["¿Qué acorde forman C-E-G-B?",["C7","Cm7","Cmaj7","Cdim7"],2],
+["¿Cuál es el IV grado de E Mayor?",["A","B","C#m","F#m"],0]
+]
+
+};
+
+let examen=[];
+
+function iniciar(){
+
+let nivel=document.getElementById("nivel").value;
+
+examen=preguntas[nivel];
+
+let html="";
+
+for(let i=0;i<examen.length;i++){
+
+html+=`
+<div class="card">
+<h3>${i+1}. ${examen[i][0]}</h3>
+`;
+
+for(let j=0;j<examen[i][1].length;j++){
+
+html+=`
+<label>
+<input type="radio" name="p${i}" value="${j}">
+${examen[i][1][j]}
+</label>
+<br>
+`;
+}
+
+html+="</div>";
+}
+
+html+=`<button onclick="corregir()">Corregir examen</button>`;
+
+document.getElementById("quiz").innerHTML=html;
+
+document.getElementById("resultado").innerHTML="";
+}
+
+function corregir(){
+
+let nota=0;
+
+for(let i=0;i<examen.length;i++){
+
+let respuesta=document.querySelector(`input[name="p${i}"]:checked`);
+
+if(respuesta){
+
+if(parseInt(respuesta.value)===examen[i][2]){
+
+nota++;
+
+}
+
+}
+
+}
+
+let porcentaje=Math.round((nota/examen.length)*100);
+
+document.getElementById("resultado").innerHTML=
+`
+<div class="card">
+<h2>Resultado</h2>
+<p>${nota} de ${examen.length} correctas</p>
+<p><strong>${porcentaje}%</strong></p>
+</div>
+`;
+
+}
+
+</script>
+
+</body>
+</html>
