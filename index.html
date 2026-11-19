@@ -3948,24 +3948,158 @@ modulo+
 
 function abrirExamen(){
 
-let modulos=[
-"teoria",
-"triadas",
-"cuatriadas",
-"tonalidades",
-"pentatonicas"
+let todos=[];
+
+Object.keys(banco).forEach(modulo=>{
+
+banco[modulo].forEach(pregunta=>{
+
+todos.push({
+...pregunta,
+modulo:modulo
+});
+
+});
+
+});
+
+preguntaActual=
+todos[
+Math.floor(Math.random()*todos.length)
 ];
 
-let modulo=
-modulos[
-Math.floor(
-Math.random()*modulos.length
-)
-];
+preguntaActual.opciones=
+mezclarOpciones(
+preguntaActual.opciones
+);
 
-abrirModulo(modulo);
+let iconos={
+
+teoria:"🎓",
+
+triadas:"🎵",
+
+cuatriadas:"🎹",
+
+tonalidades:"🎼",
+
+pentatonicas:"🎸"
+
+};
+
+let html=`
+
+<div class="card">
+
+<h2>
+
+🏆 Examen General de Armonía
+
+</h2>
+
+<p>
+
+${iconos[preguntaActual.modulo]}
+${preguntaActual.modulo.toUpperCase()}
+
+</p>
+
+<h3>
+
+${preguntaActual.pregunta}
+
+</h3>
+
+`;
+
+preguntaActual.opciones.forEach(opcion=>{
+
+html+=`
+
+<label>
+
+<input
+type="radio"
+name="respuesta"
+value="${opcion}">
+
+${opcion}
+
+</label>
+
+<br><br>
+
+`;
+
+});
+
+html+=`
+
+<button onclick="corregirExamen()">
+
+Corregir
+
+</button>
+
+<div id="resultado"></div>
+
+</div>
+
+`;
+
+document.getElementById("contenido").innerHTML=
+html;
 
 }
+
+function corregirExamen(){
+
+let respuesta=
+document.querySelector(
+'input[name="respuesta"]:checked'
+);
+
+if(!respuesta){
+
+alert("Selecciona una respuesta");
+
+return;
+
+}
+
+if(
+respuesta.value===
+preguntaActual.correcta
+){
+
+puntos+=10;
+aciertos++;
+
+document.getElementById("resultado").innerHTML=
+
+"<p class='ok'>✅ Correcto</p>";
+
+}else{
+
+fallos++;
+
+document.getElementById("resultado").innerHTML=
+
+"<p class='bad'>❌ Correcta: "
++
+preguntaActual.correcta
++
+"</p>";
+
+}
+
+actualizarMarcadores();
+
+document.getElementById("resultado").innerHTML+=
+
+"<br><button onclick='abrirExamen()'>Siguiente pregunta</button>";
+
+}  
 
 actualizarMarcadores();
 
