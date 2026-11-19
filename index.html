@@ -58,13 +58,24 @@ font-weight:bold;
 <div class="card">
 <h1>🎸 La Cueva de la Armonía de Bol</h1>
 
-<h3>Selecciona un nivel</h3>
+<h3>Academia de Armonía Moderna
+Selecciona un módulo de estudio:</h3>
 
-<select id="nivel">
-<option value="basico">Básico</option>
-<option value="intermedio">Intermedio</option>
-<option value="avanzado">Avanzado</option>
-</select>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+
+<button>🎵 Tríadas</button>
+
+<button>🎹 Cuatriadas</button>
+
+<button>🎼 Tonalidades</button>
+
+<button>🎸 Pentatónicas</button>
+
+<button style="grid-column:span 2;">
+🏆 Examen Final
+</button>
+
+</div>
 
 <button onclick="iniciar()">Comenzar</button>
 
