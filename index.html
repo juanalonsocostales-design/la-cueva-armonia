@@ -63,7 +63,7 @@ Selecciona un módulo de estudio:</h3>
 
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
 
-<button>🎵 Tríadas</button>
+<button onclick="abrirTriadas()">🎵 Tríadas</button>
 
 <button>🎹 Cuatriadas</button>
 
@@ -181,7 +181,57 @@ document.getElementById("resultado").innerHTML=
 `;
 
 }
+document.getElementById("resultado").innerHTML=
+`
+<div class="card">
+<h2>Resultado</h2>
+<p>${nota} de ${examen.length} correctas</p>
+<p><strong>${porcentaje}%</strong></p>
+</div>
+`;
 
+}
+
+function abrirTriadas(){
+
+document.getElementById("quiz").innerHTML=`
+
+<div class="card">
+
+<h2>🎵 Módulo de Tríadas</h2>
+
+<h3>¿Qué acorde forman las notas C-E-G?</h3>
+
+<label>
+<input type="radio" name="t1">
+Cm
+</label>
+<br>
+
+<label>
+<input type="radio" name="t1">
+C
+</label>
+<br>
+
+<label>
+<input type="radio" name="t1">
+C7
+</label>
+<br>
+
+<label>
+<input type="radio" name="t1">
+Cmaj7
+</label>
+
+</div>
+
+`;
+
+}
+
+</script>
 </script>
 
 </body>
