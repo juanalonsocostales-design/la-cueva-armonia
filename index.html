@@ -192,6 +192,280 @@ document.getElementById("fallos").innerHTML="❌ "+fallos;
 
 const banco={
 
+teoria:[
+
+{
+pregunta:"¿Cuántas notas tiene el sistema musical occidental?",
+correcta:"12",
+opciones:["7","8","12","14"]
+},
+
+{
+pregunta:"¿Cuáles son las notas naturales?",
+correcta:"C D E F G A B",
+opciones:[
+"C D E F G A B",
+"C D E G A B",
+"C D E F G A",
+"A B C D E F"
+]
+},
+
+{
+pregunta:"¿Qué significa un sostenido (#)?",
+correcta:"Subir medio tono",
+opciones:[
+"Subir medio tono",
+"Bajar medio tono",
+"Subir un tono",
+"Bajar un tono"
+]
+},
+
+{
+pregunta:"¿Qué significa un bemol (b)?",
+correcta:"Bajar medio tono",
+opciones:[
+"Subir medio tono",
+"Bajar medio tono",
+"Subir un tono",
+"Bajar un tono"
+]
+},
+
+{
+pregunta:"¿Qué distancia existe entre E y F?",
+correcta:"Medio tono",
+opciones:[
+"Medio tono",
+"Un tono",
+"Dos tonos",
+"Tres tonos"
+]
+},
+
+{
+pregunta:"¿Qué distancia existe entre B y C?",
+correcta:"Medio tono",
+opciones:[
+"Medio tono",
+"Un tono",
+"Dos tonos",
+"Tres tonos"
+]
+},
+
+{
+pregunta:"Un tono equivale a:",
+correcta:"Dos semitonos",
+opciones:[
+"Un semitono",
+"Dos semitonos",
+"Tres semitonos",
+"Cuatro semitonos"
+]
+},
+
+{
+pregunta:"¿Qué es un intervalo?",
+correcta:"La distancia entre dos notas",
+opciones:[
+"La distancia entre dos notas",
+"Una escala",
+"Un acorde",
+"Una tonalidad"
+]
+},
+
+{
+pregunta:"¿Cuántos tonos tiene una 3ª mayor?",
+correcta:"2 tonos",
+opciones:[
+"1 tono",
+"1,5 tonos",
+"2 tonos",
+"3 tonos"
+]
+},
+
+{
+pregunta:"¿Cuántos tonos tiene una 3ª menor?",
+correcta:"1,5 tonos",
+opciones:[
+"1 tono",
+"1,5 tonos",
+"2 tonos",
+"2,5 tonos"
+]
+},
+
+{
+pregunta:"¿Cuál es la fórmula de la escala mayor?",
+correcta:"T-T-ST-T-T-T-ST",
+opciones:[
+"T-T-ST-T-T-T-ST",
+"T-ST-T-T-ST-T-T",
+"T-T-T-ST-T-T-ST",
+"T-ST-T-ST-T-T-T"
+]
+},
+
+{
+pregunta:"¿Cuál es la fórmula de la escala menor natural?",
+correcta:"T-ST-T-T-ST-T-T",
+opciones:[
+"T-T-ST-T-T-T-ST",
+"T-ST-T-T-ST-T-T",
+"T-T-T-ST-T-T-ST",
+"ST-T-T-ST-T-T-T"
+]
+},
+
+{
+pregunta:"¿Qué tonalidad es relativa de C Mayor?",
+correcta:"Am",
+opciones:[
+"Am",
+"Em",
+"Dm",
+"Bm"
+]
+},
+
+{
+pregunta:"¿Qué tonalidad es relativa de G Mayor?",
+correcta:"Em",
+opciones:[
+"Em",
+"Am",
+"Bm",
+"Dm"
+]
+},
+
+{
+pregunta:"¿Cómo se construye una tríada?",
+correcta:"1-3-5",
+opciones:[
+"1-3-5",
+"1-2-5",
+"1-3-6",
+"1-4-5"
+]
+},
+
+{
+pregunta:"¿Cómo se construye una cuatriada?",
+correcta:"1-3-5-7",
+opciones:[
+"1-3-5-7",
+"1-2-5-7",
+"1-3-6-7",
+"1-4-5-7"
+]
+},
+
+{
+pregunta:"¿Cuál es la fórmula de una tríada mayor?",
+correcta:"1-3-5",
+opciones:[
+"1-3-5",
+"1-b3-5",
+"1-b3-b5",
+"1-3-#5"
+]
+},
+
+{
+pregunta:"¿Cuál es la fórmula de una tríada menor?",
+correcta:"1-b3-5",
+opciones:[
+"1-3-5",
+"1-b3-5",
+"1-b3-b5",
+"1-3-#5"
+]
+},
+
+{
+pregunta:"¿Cuál es la fórmula de una tríada disminuida?",
+correcta:"1-b3-b5",
+opciones:[
+"1-3-5",
+"1-b3-5",
+"1-b3-b5",
+"1-3-#5"
+]
+},
+
+{
+pregunta:"¿Cuál es la fórmula de una tríada aumentada?",
+correcta:"1-3-#5",
+opciones:[
+"1-3-5",
+"1-b3-5",
+"1-b3-b5",
+"1-3-#5"
+]
+},
+
+{
+pregunta:"¿Cuál es la fórmula de un acorde Maj7?",
+correcta:"1-3-5-7",
+opciones:[
+"1-3-5-7",
+"1-b3-5-b7",
+"1-3-5-b7",
+"1-b3-b5-b7"
+]
+},
+
+{
+pregunta:"¿Cuál es la fórmula de un acorde m7?",
+correcta:"1-b3-5-b7",
+opciones:[
+"1-3-5-7",
+"1-b3-5-b7",
+"1-3-5-b7",
+"1-b3-b5-b7"
+]
+},
+
+{
+pregunta:"¿Cuál es la fórmula de la pentatónica mayor?",
+correcta:"1-2-3-5-6",
+opciones:[
+"1-2-3-5-6",
+"1-b3-4-5-b7",
+"1-2-4-5-6",
+"1-b3-5-6-b7"
+]
+},
+
+{
+pregunta:"¿Cuál es la fórmula de la pentatónica menor?",
+correcta:"1-b3-4-5-b7",
+opciones:[
+"1-2-3-5-6",
+"1-b3-4-5-b7",
+"1-2-4-5-6",
+"1-b3-5-6-b7"
+]
+},
+
+{
+pregunta:"¿Cuál es la regla de oro de la armonía moderna?",
+correcta:"Escala → Intervalos → Acordes → Tonalidad → Pentatónica",
+opciones:[
+"Escala → Intervalos → Acordes → Tonalidad → Pentatónica",
+"Pentatónica → Escala → Tonalidad",
+"Acordes → Escala → Intervalos",
+"Improvisación → Acordes → Escala"
+]
+}
+
+],
+  
 triadas:[
 
 {
