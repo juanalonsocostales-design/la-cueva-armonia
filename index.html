@@ -1129,13 +1129,31 @@ opciones:[
 
 };
 
+ function mezclarArray(array){
+
+return [...array].sort(() => Math.random() - 0.5);
+
+} 
+  
 function obtenerPregunta(modulo){
 
 const lista=banco[modulo];
 
-return lista[
+let pregunta =
+JSON.parse(
+JSON.stringify(
+lista[
 Math.floor(Math.random()*lista.length)
-];
+]
+)
+);
+
+pregunta.opciones =
+mezclarArray(
+pregunta.opciones
+);
+
+return pregunta;
 
 }
 
