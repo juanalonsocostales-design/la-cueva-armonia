@@ -281,15 +281,91 @@ actualizarMarcadores();
 
 function abrirCuatriadas(){
 
+function corregirCuatriada(){
+
+let respuesta=
+document.querySelector(
+'input[name="cuat"]:checked'
+);
+
+if(!respuesta){
+
+alert("Selecciona una respuesta");
+
+return;
+
+}
+
+if(respuesta.value==="Cmaj7"){
+
+puntos+=10;
+aciertos++;
+
+document.getElementById("resultado").innerHTML=
+"<p class='correcto'>✅ Correcto</p>";
+
+}else{
+
+fallos++;
+
+document.getElementById("resultado").innerHTML=
+"<p class='incorrecto'>❌ Correcto: Cmaj7</p>";
+
+}
+
+actualizarMarcadores();
+
+}
+    
 document.getElementById("contenido").innerHTML=
 `
+
 <div class="card">
+
 <h2>🎹 Cuatriadas</h2>
-<p>Próximamente.</p>
+
+<h3>¿Qué acorde forman las notas C-E-G-B?</h3>
+
+<label>
+<input type="radio" name="cuat" value="C7">
+C7
+</label>
+
+<br><br>
+
+<label>
+<input type="radio" name="cuat" value="Cm7">
+Cm7
+</label>
+
+<br><br>
+
+<label>
+<input type="radio" name="cuat" value="Cmaj7">
+Cmaj7
+</label>
+
+<br><br>
+
+<label>
+<input type="radio" name="cuat" value="Cdim7">
+Cdim7
+</label>
+
+<br><br>
+
+<button onclick="corregirCuatriada()">
+Corregir
+</button>
+
+<div id="resultado"></div>
+
 </div>
+
 `;
 
 }
+
 
 function abrirTonalidades(){
 
