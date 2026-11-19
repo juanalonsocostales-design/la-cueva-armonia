@@ -63,6 +63,58 @@ font-weight:bold;
 color:red;
 font-weight:bold;
 }
+
+.teoria-box{
+background:#eef4ff;
+padding:15px;
+border-radius:10px;
+margin:15px 0;
+border-left:5px solid #2563eb;
+}
+
+.ejemplo-box{
+background:#f0fdf4;
+padding:15px;
+border-radius:10px;
+margin:15px 0;
+border-left:5px solid #16a34a;
+}
+
+.regla-box{
+background:#fff7ed;
+padding:15px;
+border-radius:10px;
+margin:15px 0;
+border-left:5px solid #f97316;
+}
+
+.codigo{
+font-family:monospace;
+font-size:18px;
+font-weight:bold;
+background:#f3f4f6;
+padding:10px;
+border-radius:8px;
+margin:10px 0;
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+margin-top:10px;
+}
+
+td,
+th{
+border:1px solid #ddd;
+padding:8px;
+}
+
+th{
+background:#2563eb;
+color:white;
+}
+  
 </style>
 </head>
 
@@ -1162,157 +1214,314 @@ return pregunta;
 }
 
 function abrirTeoria(){
-
 document.getElementById("contenido").innerHTML=`
-
 <div class="card">
-
-<h2>🎓 Teoría Musical</h2>
-
-<h3>📖 Lección 1 - Las notas musicales</h3>
-
+<h1>🎓 Teoría Musical</h1>
 <p>
-
-La música occidental utiliza 12 sonidos:
-
+Esta guía resume los conceptos fundamentales necesarios
+para comprender tríadas, cuatriadas, tonalidades
+y pentatónicas.
 </p>
-
+<hr>
+<h2>🎵 1. Las notas musicales</h2>
 <p>
-
-C C# D D# E F F# G G# A A# B
-
+La música occidental utiliza 12 sonidos.
 </p>
-
+<h3>Notas naturales</h3>
 <p>
-
-Las notas naturales son:
-
-</p>
-
-<p>
-
 <strong>
 C D E F G A B
 </strong>
-
 </p>
-
+<h3>Notas alteradas</h3>
 <p>
-
-Recuerda:
-
+C# D# F# G# A#
 </p>
-
-<ul>
-
-<li>E-F = medio tono</li>
-
-<li>B-C = medio tono</li>
-
-<li>El resto = un tono</li>
-
-</ul>
-
+<p>
+Db Eb Gb Ab Bb
+</p>
+<p>
+Las notas alteradas pueden escribirse como
+sostenidos (#) o bemoles (b).
+</p>
 <hr>
-
-<h3>📝 Ejercicio</h3>
-
+<h2>🎵 2. Tonos y semitonos</h2>
 <p>
-
-¿Cuál está a medio tono de E?
-
+Un semitono es la distancia más pequeña utilizada
+habitualmente en la música occidental.
 </p>
-
-<label>
-
-<input type="radio" name="teoria1" value="D#">
-
-D#
-
-</label>
-
-<br><br>
-
-<label>
-
-<input type="radio" name="teoria1" value="F">
-
-F
-
-</label>
-
-<br><br>
-
-<label>
-
-<input type="radio" name="teoria1" value="G">
-
-G
-
-</label>
-
-<br><br>
-
-<label>
-
-<input type="radio" name="teoria1" value="F#">
-
-F#
-
-</label>
-
-<br><br>
-
-<button onclick="corregirTeoria()">
-
-Corregir
-
+<p>
+<strong>
+E → F
+<br>
+B → C
+</strong>
+</p>
+<p>
+son ejemplos de semitonos naturales.
+</p>
+<p>
+Dos semitonos forman un tono.
+</p>
+<p>
+<strong>
+C → D
+<br>
+F → G
+<br>
+A → B
+</strong>
+</p>
+<hr>
+<h2>🎵 3. Alteraciones</h2>
+<p>
+<strong>#</strong>
+significa subir medio tono.
+</p>
+<p>
+Ejemplo:
+C → C#
+</p>
+<p>
+<strong>b</strong>
+significa bajar medio tono.
+</p>
+<p>
+Ejemplo:
+D → Db
+</p>
+<hr>
+<h2>🎵 4. Intervalos</h2>
+<p>
+Un intervalo es la distancia entre dos notas.
+</p>
+<table style="width:100%;border-collapse:collapse;">
+<tr>
+<th align="left">Intervalo</th>
+<th align="left">Distancia</th>
+</tr>
+<tr>
+<td>3ª menor</td>
+<td>1,5 tonos</td>
+</tr>
+<tr>
+<td>3ª mayor</td>
+<td>2 tonos</td>
+</tr>
+<tr>
+<td>5ª justa</td>
+<td>3,5 tonos</td>
+</tr>
+<tr>
+<td>7ª menor</td>
+<td>5 tonos</td>
+</tr>
+<tr>
+<td>7ª mayor</td>
+<td>5,5 tonos</td>
+</tr>
+</table>
+<br>
+<p>
+Ejemplos:
+</p>
+<ul>
+<li>C → E = 3ª mayor</li>
+<li>A → C = 3ª menor</li>
+<li>C → G = 5ª justa</li>
+</ul>
+<hr>
+<h2>🎵 5. Escala Mayor</h2>
+<p>
+Fórmula:
+</p>
+<p>
+<strong>
+T - T - ST - T - T - T - ST
+</strong>
+</p>
+<p>
+(T = tono)
+</p>
+<p>
+(ST = semitono)
+</p>
+<p>
+Ejemplo: C Mayor
+</p>
+<p>
+C D E F G A B
+</p>
+<hr>
+<h2>🎵 6. Escala Menor Natural</h2>
+<p>
+Fórmula:
+</p>
+<p>
+<strong>
+T - ST - T - T - ST - T - T
+</strong>
+</p>
+<p>
+Ejemplo: A Menor
+</p>
+<p>
+A B C D E F G
+</p>
+<hr>
+<h2>🎵 7. Tonalidades Relativas</h2>
+<p>
+Cada tonalidad mayor tiene una relativa menor
+que comparte exactamente las mismas notas.
+</p>
+<ul>
+<li>C Mayor ↔ Am</li>
+<li>G Mayor ↔ Em</li>
+<li>D Mayor ↔ Bm</li>
+<li>A Mayor ↔ F#m</li>
+<li>E Mayor ↔ C#m</li>
+</ul>
+<hr>
+<h2>🎵 8. Construcción de acordes</h2>
+<h3>Tríadas</h3>
+<p>
+Se construyen sobre:
+</p>
+<p>
+<strong>
+1 - 3 - 5
+</strong>
+</p>
+<p>
+Ejemplo:
+</p>
+<p>
+C E G
+</p>
+<h3>Cuatriadas</h3>
+<p>
+Se construyen sobre:
+</p>
+<p>
+<strong>
+1 - 3 - 5 - 7
+</strong>
+</p>
+<p>
+Ejemplo:
+</p>
+<p>
+C E G B
+</p>
+<hr>
+<h2>🎵 9. Tipos de Tríadas</h2>
+<h3>Mayor</h3>
+<p>
+1 - 3 - 5
+</p>
+<p>
+C E G
+</p>
+<h3>Menor</h3>
+<p>
+1 - b3 - 5
+</p>
+<p>
+A C E
+</p>
+<h3>Disminuida</h3>
+<p>
+1 - b3 - b5
+</p>
+<p>
+B D F
+</p>
+<hr>
+<h2>🎵 10. Tipos de Cuatriadas</h2>
+<h3>Maj7</h3>
+<p>
+1 - 3 - 5 - 7
+</p>
+<p>
+C E G B
+</p>
+<h3>m7</h3>
+<p>
+1 - b3 - 5 - b7
+</p>
+<p>
+A C E G
+</p>
+<h3>7 Dominante</h3>
+<p>
+1 - 3 - 5 - b7
+</p>
+<p>
+G B D F
+</p>
+<h3>m7b5</h3>
+<p>
+1 - b3 - b5 - b7
+</p>
+<p>
+B D F A
+</p>
+<hr>
+<h2>🎵 11. Escala Pentatónica Mayor</h2>
+<p>
+1 - 2 - 3 - 5 - 6
+</p>
+<p>
+C D E G A
+</p>
+<hr>
+<h2>🎵 12. Escala Pentatónica Menor</h2>
+<p>
+1 - b3 - 4 - 5 - b7
+</p>
+<p>
+A C D E G
+</p>
+<hr>
+<h2>🎵 13. Relación Pentatónica Mayor-Menor</h2>
+<p>
+C Mayor Pentatónica
+=
+Am Pentatónica
+</p>
+<p>
+Comparten las mismas notas:
+</p>
+<p>
+C D E G A
+</p>
+<hr>
+<h2>📌 Regla de Oro</h2>
+<p style="text-align:center;line-height:2;">
+Escala
+<br>
+⬇
+<br>
+Intervalos
+<br>
+⬇
+<br>
+Acordes
+<br>
+⬇
+<br>
+Tonalidad
+<br>
+⬇
+<br>
+Pentatónica
+</p>
+<br>
+<button onclick="abrirModulo('triadas')">
+🎵 Empezar con Tríadas
 </button>
-
-<div id="resultado"></div>
-
 </div>
-
 `;
-
-}
-
-function corregirTeoria(){
-
-let respuesta=
-document.querySelector(
-'input[name="teoria1"]:checked'
-);
-
-if(!respuesta){
-
-alert("Selecciona una respuesta");
-
-return;
-
-}
-
-if(respuesta.value==="F"){
-
-puntos+=10;
-aciertos++;
-
-document.getElementById("resultado").innerHTML=
-
-"<p class='ok'>✅ Correcto</p>";
-
-}else{
-
-fallos++;
-
-document.getElementById("resultado").innerHTML=
-
-"<p class='bad'>❌ Correcto: F</p>";
-
-}
-
-actualizarMarcadores();
-
 }
  
 function abrirModulo(modulo){
