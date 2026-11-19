@@ -83,7 +83,11 @@ font-weight:bold;
 
 <div class="menu">
 
-<button onclick="abrirModulo('triadas')">
+<button onclick="abrirTeoria()">
+🎓 Teoría Musical
+</button>
+  
+ <button onclick="abrirModulo('triadas')">
 🎵 Tríadas
 </button>
 
@@ -1157,6 +1161,160 @@ return pregunta;
 
 }
 
+function abrirTeoria(){
+
+document.getElementById("contenido").innerHTML=`
+
+<div class="card">
+
+<h2>🎓 Teoría Musical</h2>
+
+<h3>📖 Lección 1 - Las notas musicales</h3>
+
+<p>
+
+La música occidental utiliza 12 sonidos:
+
+</p>
+
+<p>
+
+C C# D D# E F F# G G# A A# B
+
+</p>
+
+<p>
+
+Las notas naturales son:
+
+</p>
+
+<p>
+
+<strong>
+C D E F G A B
+</strong>
+
+</p>
+
+<p>
+
+Recuerda:
+
+</p>
+
+<ul>
+
+<li>E-F = medio tono</li>
+
+<li>B-C = medio tono</li>
+
+<li>El resto = un tono</li>
+
+</ul>
+
+<hr>
+
+<h3>📝 Ejercicio</h3>
+
+<p>
+
+¿Cuál está a medio tono de E?
+
+</p>
+
+<label>
+
+<input type="radio" name="teoria1" value="D#">
+
+D#
+
+</label>
+
+<br><br>
+
+<label>
+
+<input type="radio" name="teoria1" value="F">
+
+F
+
+</label>
+
+<br><br>
+
+<label>
+
+<input type="radio" name="teoria1" value="G">
+
+G
+
+</label>
+
+<br><br>
+
+<label>
+
+<input type="radio" name="teoria1" value="F#">
+
+F#
+
+</label>
+
+<br><br>
+
+<button onclick="corregirTeoria()">
+
+Corregir
+
+</button>
+
+<div id="resultado"></div>
+
+</div>
+
+`;
+
+}
+
+function corregirTeoria(){
+
+let respuesta=
+document.querySelector(
+'input[name="teoria1"]:checked'
+);
+
+if(!respuesta){
+
+alert("Selecciona una respuesta");
+
+return;
+
+}
+
+if(respuesta.value==="F"){
+
+puntos+=10;
+aciertos++;
+
+document.getElementById("resultado").innerHTML=
+
+"<p class='ok'>✅ Correcto</p>";
+
+}else{
+
+fallos++;
+
+document.getElementById("resultado").innerHTML=
+
+"<p class='bad'>❌ Correcto: F</p>";
+
+}
+
+actualizarMarcadores();
+
+}
+ 
 function abrirModulo(modulo){
 
 preguntaActual=
