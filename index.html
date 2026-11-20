@@ -124,7 +124,32 @@ text-decoration:none;
 a:hover{
 text-decoration:underline;
 }
-  
+.cabecera{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:20px;
+}
+
+.logo img{
+width:230px;
+height:auto;
+border-radius:8px;
+}
+
+@media(max-width:768px){
+
+.cabecera{
+flex-direction:column;
+text-align:center;
+gap:15px;
+}
+
+.logo img{
+width:180px;
+}
+
+}  
 </style>
 </head>
 
@@ -134,8 +159,17 @@ text-decoration:underline;
 
 <div class="card">
 
-<h1>🎸 La Cueva de la Armonía</h1>
-<h2>La Cueva Music's Cool</h2>
+<div class="cabecera">
+
+    <div class="titulo">
+        <h1>🎸 La Cueva de la Armonía</h1>
+    </div>
+
+    <div class="logo">
+        <img src="logo.jpg" alt="Logo">
+    </div>
+
+</div>
 
 <div class="stats">
 <div id="puntos">⭐ 0</div>
