@@ -183,17 +183,7 @@ background:#2563eb !important;
 .btn-examen:hover{
 background:#1d4ed8 !important;
 }   
-.btn-teoria{
-background:#16a34a !important;
-}
 
-.btn-modulo{
-background:#4ade80 !important;
-}
-
-.btn-examen{
-background:#2563eb !important;
-}    
 </style>
 </head>
 
@@ -223,27 +213,34 @@ background:#2563eb !important;
 
 <div class="menu">
 
-<button onclick="abrirTeoria()">
+<button class="btn-teoria"
+style="grid-column:span 2"
+onclick="abrirTeoria()">
 🎓 Teoría Musical
 </button>
-  
- <button onclick="abrirModulo('triadas')">
+
+<button class="btn-modulo"
+onclick="abrirModulo('triadas')">
 🎵 Tríadas
 </button>
 
-<button onclick="abrirModulo('cuatriadas')">
+<button class="btn-modulo"
+onclick="abrirModulo('cuatriadas')">
 🎹 Cuatriadas
 </button>
 
-<button onclick="abrirModulo('tonalidades')">
+<button class="btn-modulo"
+onclick="abrirModulo('tonalidades')">
 🎼 Tonalidades
 </button>
 
-<button onclick="abrirModulo('pentatonicas')">
+<button class="btn-modulo"
+onclick="abrirModulo('pentatonicas')">
 🎸 Pentatónicas
 </button>
 
-<button style="grid-column:span 2"
+<button class="btn-examen"
+style="grid-column:span 2"
 onclick="abrirExamen()">
 🏆 Examen Final
 </button>
