@@ -4408,6 +4408,82 @@ alert("❌ Incorrecto. Inténtalo otra vez.");
 }
 
 }
+
+function abrirAdventure(){
+
+document.getElementById("contenido").innerHTML=`
+
+<h2>🎮 Harmony Adventure</h2>
+
+<h3>🏘️ Capítulo 1: La Aldea del Do</h3>
+
+<p>
+El anciano del pueblo necesita tu ayuda.
+</p>
+
+<p>
+La puerta de la aldea está cerrada.
+</p>
+
+<p>
+Para abrirla debes completar el acorde:
+</p>
+
+<h2>C - E - ?</h2>
+
+<button onclick="resolverAdventure('G')">
+G
+</button>
+
+<button onclick="resolverAdventure('A')">
+A
+</button>
+
+<button onclick="resolverAdventure('B')">
+B
+</button>
+
+<button onclick="resolverAdventure('D')">
+D
+</button>
+
+`;
+
+}
+
+function resolverAdventure(respuesta){
+
+if(respuesta==="G"){
+
+document.getElementById("contenido").innerHTML=`
+
+<h2>✅ Correcto</h2>
+
+<p>
+Has encontrado la Llave del Do.
+</p>
+
+<p>
+⭐ +50 experiencia
+</p>
+
+<p>
+🎉 Fin de la demo.
+</p>
+
+<button onclick="abrirAdventure()">
+🔄 Jugar otra vez
+</button>
+
+`;
+
+}else{
+
+alert("❌ Incorrecto. Inténtalo otra vez.");
+
+}
+
+}    
     
 </script>
 
