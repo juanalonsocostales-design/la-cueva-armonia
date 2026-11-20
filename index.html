@@ -269,7 +269,8 @@ let preguntaActual=null;
 let examenPreguntas=[];
 let examenActual=0;
 let examenAciertos=0;
-  
+let erroresExamen = [];
+    
 function actualizarMarcadores(){
 
 document.getElementById("puntos").innerHTML="⭐ "+puntos;
@@ -4069,6 +4070,8 @@ modulo+
 
 function abrirExamen(){
 
+erroresExamen=[];
+    
 let todos=[];
 
 Object.keys(banco).forEach(modulo=>{
@@ -4203,7 +4206,15 @@ respuesta.value===
 preguntaActual.correcta
 ){
 
-examenAciertos++;
+    examenAciertos++;
+
+}else{
+
+    erroresExamen.push({
+        pregunta: preguntaActual.pregunta,
+        tuRespuesta: respuesta.value,
+        correcta: preguntaActual.correcta
+    });
 
 }
 
@@ -4276,7 +4287,25 @@ Nota: ${nota}
 ${mensaje}
 
 </h2>
+<h3>❌ Errores cometidos</h3>
 
+${erroresExamen.map(error=>`
+<div style="
+background:#fee2e2;
+padding:10px;
+margin:10px 0;
+border-radius:8px;
+text-align:left;
+">
+
+<p><b>Pregunta:</b> ${error.pregunta}</p>
+
+<p><b>Tu respuesta:</b> ${error.tuRespuesta}</p>
+
+<p><b>Respuesta correcta:</b> ${error.correcta}</p>
+
+</div>
+`).join("")}
 <button onclick="abrirExamen()">
 
 🔄 Nuevo Examen
